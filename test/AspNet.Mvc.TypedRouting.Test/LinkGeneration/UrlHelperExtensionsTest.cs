@@ -1,14 +1,11 @@
 ﻿namespace AspNet.Mvc.TypedRouting.Test.LinkGeneration
 {
     using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Builder.Internal;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Abstractions;
     using Microsoft.AspNetCore.Mvc.Infrastructure;
-    using Microsoft.AspNetCore.Mvc.Internal;
     using Microsoft.AspNetCore.Mvc.Routing;
-    using Microsoft.AspNetCore.Routing.Internal;
     using Microsoft.AspNetCore.Routing;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.ObjectPool;
@@ -17,10 +14,9 @@
     using System;
     using System.Collections.Generic;
     using System.Text.Encodings.Web;
-    using Xunit;
-
-    using With = Microsoft.AspNetCore.Mvc.With;
     using TypedRouting.LinkGeneration;
+    using Xunit;
+    using With = Microsoft.AspNetCore.Mvc.With;
 
     [Collection("TypedRoutingTests")]
     public class UrlHelperExtensionsTest

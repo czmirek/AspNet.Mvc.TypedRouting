@@ -1,7 +1,7 @@
 ﻿namespace AspNet.Mvc.TypedRouting.Routing
 {
-    using System.Linq;
     using Microsoft.AspNetCore.Mvc.ApplicationModels;
+    using System.Linq;
 
     internal class TypedRoutingControllerModelConvention : IControllerModelConvention
     {

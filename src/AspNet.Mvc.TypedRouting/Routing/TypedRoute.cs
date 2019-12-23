@@ -2,13 +2,12 @@
 {
     using Microsoft.AspNetCore.Mvc.ActionConstraints;
     using Microsoft.AspNetCore.Mvc.ApplicationModels;
-    using Microsoft.AspNetCore.Mvc.Internal;
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Threading.Tasks;
-    
+
     public class TypedRoute : AttributeRouteModel, ITypedRoute, ITypedRouteDetails
     {
         internal TypedRoute(string template, string[] httpMethods)

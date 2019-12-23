@@ -1,16 +1,16 @@
 ﻿namespace AspNet.Mvc.TypedRouting.Test.LinkGeneration
 {
-    using System.IO;
-    using System.Collections.Generic;
-    using System.Text.Encodings.Web;
     using Microsoft.AspNetCore.Html;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Routing;
     using Microsoft.Extensions.WebEncoders.Testing;
     using Moq;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Text.Encodings.Web;
     using Xunit;
-    using Microsoft.AspNetCore.Http;
 
     // Since the original MVC helper is living hell to test, these unit tests just test whether
     // the typed extensions pass correct values.

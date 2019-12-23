@@ -1,11 +1,10 @@
-﻿using AspNet.Mvc.TypedRouting.LinkGeneration;
-using AspNet.Mvc.TypedRouting.Routing;
-
-namespace Microsoft.AspNetCore.Builder
+﻿namespace Microsoft.AspNetCore.Builder
 {
-    using Mvc;
-    using System;
+    using AspNet.Mvc.TypedRouting.LinkGeneration;
+    using AspNet.Mvc.TypedRouting.Routing;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.DependencyInjection;
+    using System;
 
     public static class MvcBuilderExtensions
     {
