@@ -1,3 +1,7 @@
+## This is a fork of the TypedRouting project converted into .net core 3.1
+The original project has been dead for years. Below is the former description.
+
+====================================
 <h1><img src="https://raw.githubusercontent.com/ivaylokenov/AspNet.Mvc.TypedRouting/master/tools/logo.png" align="left" alt="AspNet.Mvc.TypedRouting" width="100">&nbsp; AspNet.Mvc.TypedRouting - Typed routing<br />&nbsp; and link generation for ASP.NET Core MVC</h1>
 ====================================
 
