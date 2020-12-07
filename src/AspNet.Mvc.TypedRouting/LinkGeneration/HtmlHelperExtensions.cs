@@ -1,11 +1,11 @@
-﻿namespace Microsoft.AspNetCore.Mvc.Rendering
+﻿namespace Panelak.TypedRouting
 {
+    using Microsoft.AspNetCore.Html;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
-    using Html;
-    using AspNet.Mvc.TypedRouting.LinkGeneration;
 
     public static class HtmlHelperExtensions
     {
@@ -77,9 +77,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -113,9 +113,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -149,14 +149,14 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -191,14 +191,14 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -236,14 +236,14 @@
         /// <param name="hostНame">The host name for the URL.</param>
         /// <param name="fragment">The URL fragment name (the anchor name).</param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -259,7 +259,7 @@
             object htmlAttributes)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues);
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues);
             return helper.ActionLink(
                 linkText,
                 expressionRouteValues.Action,
@@ -286,14 +286,14 @@
         /// <param name="hostНame">The host name for the URL.</param>
         /// <param name="fragment">The URL fragment name (the anchor name).</param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -309,7 +309,7 @@
             object htmlAttributes)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues);
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues);
             return helper.ActionLink(
                 linkText,
                 expressionRouteValues.Action,
@@ -396,9 +396,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -435,9 +435,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -474,14 +474,14 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -519,14 +519,14 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -567,14 +567,14 @@
         /// <param name="hostНame">The host name for the URL.</param>
         /// <param name="fragment">The URL fragment name (the anchor name).</param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -591,7 +591,7 @@
             object htmlAttributes)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues, addControllerAndActionToRouteValues: true);
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues, addControllerAndActionToRouteValues: true);
             return helper.RouteLink(
                 linkText,
                 routeName,
@@ -618,14 +618,14 @@
         /// <param name="hostНame">The host name for the URL.</param>
         /// <param name="fragment">The URL fragment name (the anchor name).</param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -642,7 +642,7 @@
             object htmlAttributes)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues, addControllerAndActionToRouteValues: true);
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues, addControllerAndActionToRouteValues: true);
             return helper.RouteLink(
                 linkText,
                 routeName,
@@ -787,9 +787,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -823,9 +823,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -859,9 +859,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -901,9 +901,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -1074,9 +1074,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -1111,9 +1111,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -1148,9 +1148,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -1191,9 +1191,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -1236,7 +1236,7 @@
         /// </param>
         /// <param name="method">The HTTP method for processing the form, either GET or POST.</param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -1272,7 +1272,7 @@
         /// </param>
         /// <param name="method">The HTTP method for processing the form, either GET or POST.</param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -1313,7 +1313,7 @@
         /// If <c>null</c>, &lt;form&gt; elements will include an antiforgery token.
         /// </param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -1355,7 +1355,7 @@
         /// If <c>null</c>, &lt;form&gt; elements will include an antiforgery token.
         /// </param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -1391,15 +1391,15 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="method">The HTTP method for processing the form, either GET or POST.</param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -1417,7 +1417,7 @@
             object htmlAttributes)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues);
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues);
             return helper.BeginForm(
                 expressionRouteValues.Action,
                 expressionRouteValues.Controller,
@@ -1437,15 +1437,15 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="method">The HTTP method for processing the form, either GET or POST.</param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -1463,7 +1463,7 @@
             object htmlAttributes)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues);
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues);
             return helper.BeginForm(
                 expressionRouteValues.Action,
                 expressionRouteValues.Controller,
@@ -1483,9 +1483,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -1496,7 +1496,7 @@
         /// If <c>null</c>, &lt;form&gt; elements will include an antiforgery token.
         /// </param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -1515,7 +1515,7 @@
             object htmlAttributes)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues);
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues);
             return helper.BeginForm(
                 expressionRouteValues.Action,
                 expressionRouteValues.Controller,
@@ -1535,9 +1535,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -1548,7 +1548,7 @@
         /// If <c>null</c>, &lt;form&gt; elements will include an antiforgery token.
         /// </param>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -1567,7 +1567,7 @@
             object htmlAttributes)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues);
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, routeValues);
             return helper.BeginForm(
                 expressionRouteValues.Action,
                 expressionRouteValues.Controller,
@@ -1860,9 +1860,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -1893,9 +1893,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -1926,9 +1926,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -1965,9 +1965,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey,TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -2004,9 +2004,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -2039,9 +2039,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -2062,7 +2062,7 @@
         {
             return helper.BeginRouteForm(routeName, routeValues, method, antiforgery: null, htmlAttributes: null);
         }
-        
+
         /// <summary>
         /// Renders a &lt;form&gt; start tag to the response. The route with name <paramref name="routeName"/>
         /// generates the &lt;form&gt;'s <c>action</c> attribute value.
@@ -2074,9 +2074,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -2115,9 +2115,9 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
@@ -2160,7 +2160,7 @@
         /// An <see cref="MvcForm"/> instance which renders the &lt;/form&gt; end tag when disposed.
         /// </returns>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -2193,7 +2193,7 @@
         /// An <see cref="MvcForm"/> instance which renders the &lt;/form&gt; end tag when disposed.
         /// </returns>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -2210,7 +2210,7 @@
         {
             return helper.BeginRouteForm(routeName, routeValues: null, method: method, antiforgery: null, htmlAttributes: htmlAttributes);
         }
-        
+
         /// <summary>
         /// Renders a &lt;form&gt; start tag to the response. The route with name <paramref name="routeName"/>
         /// generates the &lt;form&gt;'s <c>action</c> attribute value.
@@ -2226,7 +2226,7 @@
         /// An <see cref="MvcForm"/> instance which renders the &lt;/form&gt; end tag when disposed.
         /// </returns>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -2265,7 +2265,7 @@
         /// An <see cref="MvcForm"/> instance which renders the &lt;/form&gt; end tag when disposed.
         /// </returns>
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -2300,15 +2300,15 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="method">The HTTP method for processing the form, either GET or POST.</param> 
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -2327,7 +2327,7 @@
             object htmlAttributes)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(
                 action,
                 routeValues,
                 addControllerAndActionToRouteValues: true);
@@ -2346,15 +2346,15 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="method">The HTTP method for processing the form, either GET or POST.</param> 
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -2373,7 +2373,7 @@
             object htmlAttributes)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(
                 action,
                 routeValues,
                 addControllerAndActionToRouteValues: true);
@@ -2392,15 +2392,15 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="method">The HTTP method for processing the form, either GET or POST.</param> 
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -2425,7 +2425,7 @@
             object htmlAttributes)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(
                 action,
                 routeValues,
                 addControllerAndActionToRouteValues: true);
@@ -2444,15 +2444,15 @@
         /// controller name and route values are resolved.
         /// </param>
         /// <param name="routeValues">
-        /// An <see cref="object"/> that contains the parameters for a route. The parameters are retrieved through
-        /// reflection by examining the properties of the <see cref="object"/>. This <see cref="object"/> is typically
-        /// created using <see cref="object"/> initializer syntax. Alternatively, an
+        /// An <see cref="Object"/> that contains the parameters for a route. The parameters are retrieved through
+        /// reflection by examining the properties of the <see cref="Object"/>. This <see cref="Object"/> is typically
+        /// created using <see cref="Object"/> initializer syntax. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the route
         /// parameters.
         /// </param>
         /// <param name="method">The HTTP method for processing the form, either GET or POST.</param> 
         /// <param name="htmlAttributes">
-        /// An <see cref="object"/> that contains the HTML attributes for the element. Alternatively, an
+        /// An <see cref="Object"/> that contains the HTML attributes for the element. Alternatively, an
         /// <see cref="IDictionary{TKey, TValue}"/> instance containing the HTML
         /// attributes.
         /// </param>
@@ -2477,14 +2477,14 @@
             object htmlAttributes)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(
                 action,
                 routeValues,
                 addControllerAndActionToRouteValues: true);
 
             return helper.BeginRouteForm(routeName, expressionRouteValues.RouteValues, method, antiforgery: antiforgery, htmlAttributes: htmlAttributes);
         }
-        
+
         private static IExpressionRouteHelper GetExpresionRouteHelper(IHtmlHelper helper)
             => helper.ViewContext.HttpContext.RequestServices.GetExpressionRouteHelper();
     }

@@ -1,15 +1,17 @@
-﻿namespace AspNet.Mvc.TypedRouting.LinkGeneration
+﻿namespace Panelak.TypedRouting
 {
-    using System;
-    using System.Collections.Concurrent;
-    using System.Collections.Generic;
-    using System.Linq.Expressions;
-    using System.Reflection;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Abstractions;
     using Microsoft.AspNetCore.Mvc.Controllers;
     using Microsoft.AspNetCore.Mvc.Infrastructure;
     using Microsoft.AspNetCore.Routing;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq.Expressions;
+    using System.Reflection;
+    using System.Threading.Tasks;
 
     public class ExpressionRouteHelper : IExpressionRouteHelper
     {
@@ -21,15 +23,14 @@
         private readonly ISet<string> uniqueRouteKeys;
 
         public ExpressionRouteHelper(
-            IActionDescriptorCollectionProvider actionDescriptorsCollectionProvider,
-            IUniqueRouteKeysProvider uniqueRouteKeysProvider)
+            IActionDescriptorCollectionProvider actionDescriptorsCollectionProvider)
         {
             controllerActionDescriptorCache = new ConcurrentDictionary<MethodInfo, ControllerActionDescriptor>();
 
-            uniqueRouteKeys = uniqueRouteKeysProvider.GetUniqueKeys();
+            uniqueRouteKeys = new HashSet<string>();
             actionDescriptorsCollection = actionDescriptorsCollectionProvider;
         }
-        
+
         public ExpressionRouteValues Resolve<TController>(
             Expression<Action<TController>> expression,
             object additionalRouteValues = null,
@@ -66,47 +67,46 @@
             {
                 throw new ArgumentNullException(nameof(expression));
             }
-            
-            var methodCallExpression = expression.Body as MethodCallExpression;
-            if (methodCallExpression != null)
+
+            if (expression.Body is MethodCallExpression methodCallExpression)
             {
-                var controllerType = methodCallExpression.Object?.Type;
+                Type controllerType = methodCallExpression.Object?.Type;
                 if (controllerType == null)
                 {
                     // Method call is not valid because it is static.
                     throw new InvalidOperationException("Expression is not valid - expected instance method call but instead received static method call.");
                 }
 
-                var methodInfo = methodCallExpression.Method;
+                MethodInfo methodInfo = methodCallExpression.Method;
 
                 // Find controller action descriptor from the provider with the same extracted method info.
                 // This search is potentially slow, so it is cached after the first lookup.
-                var controllerActionDescriptor = GetActionDescriptorFromCache(methodInfo);
+                ControllerActionDescriptor controllerActionDescriptor = GetActionDescriptorFromCache(methodInfo);
 
-                var controllerName = controllerActionDescriptor.ControllerName;
-                var actionName = controllerActionDescriptor.ActionName;
-                
-                var routeValues = GetRouteValues(methodInfo, methodCallExpression, controllerActionDescriptor);
-                
+                string controllerName = controllerActionDescriptor.ControllerName;
+                string actionName = controllerActionDescriptor.ActionName;
+
+                IDictionary<string, object> routeValues = GetRouteValues(methodInfo, methodCallExpression, controllerActionDescriptor);
+
                 // If there is a required route value, add it to the result.
-                foreach (var requiredRouteValue in controllerActionDescriptor.RouteValues)
+                foreach (KeyValuePair<string, string> requiredRouteValue in controllerActionDescriptor.RouteValues)
                 {
-                    var routeKey = requiredRouteValue.Key;
-                    var routeValue = requiredRouteValue.Value;
+                    string routeKey = requiredRouteValue.Key;
+                    string routeValue = requiredRouteValue.Value;
 
-                    if (string.Equals(routeKey, RouteGroupKey))
+                    if (String.Equals(routeKey, RouteGroupKey))
                     {
                         continue;
                     }
 
-                    if (routeValue != string.Empty)
+                    if (routeValue != String.Empty)
                     {
                         // Override the 'default' values.
-                        if (string.Equals(routeKey, "controller", StringComparison.OrdinalIgnoreCase))
+                        if (String.Equals(routeKey, "controller", StringComparison.OrdinalIgnoreCase))
                         {
                             controllerName = routeValue;
                         }
-                        else if (string.Equals(routeKey, "action", StringComparison.OrdinalIgnoreCase))
+                        else if (String.Equals(routeKey, "action", StringComparison.OrdinalIgnoreCase))
                         {
                             actionName = routeValue;
                         }
@@ -116,7 +116,7 @@
                         }
                     }
                 }
-                
+
                 ApplyAdditionaRouteValues(additionalRouteValues, routeValues);
 
                 if (addControllerAndActionToRouteValues)
@@ -124,11 +124,11 @@
                     AddControllerAndActionToRouteValues(controllerName, actionName, routeValues);
                 }
 
-                foreach (var uniqueRouteKey in uniqueRouteKeys)
+                foreach (string uniqueRouteKey in uniqueRouteKeys)
                 {
                     if (!routeValues.ContainsKey(uniqueRouteKey))
                     {
-                        routeValues.Add(uniqueRouteKey, string.Empty);
+                        routeValues.Add(uniqueRouteKey, String.Empty);
                     }
                 }
 
@@ -150,12 +150,11 @@
             {
                 // we are only interested in controller actions
                 ControllerActionDescriptor foundControllerActionDescriptor = null;
-                var actionDescriptors = actionDescriptorsCollection.ActionDescriptors.Items;
+                IReadOnlyList<Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor> actionDescriptors = actionDescriptorsCollection.ActionDescriptors.Items;
                 for (int i = 0; i < actionDescriptors.Count; i++)
                 {
-                    var actionDescriptor = actionDescriptors[i];
-                    var descriptor = actionDescriptor as ControllerActionDescriptor;
-                    if (descriptor != null && descriptor.MethodInfo == methodInfo)
+                    Microsoft.AspNetCore.Mvc.Abstractions.ActionDescriptor actionDescriptor = actionDescriptors[i];
+                    if (actionDescriptor is ControllerActionDescriptor descriptor && descriptor.MethodInfo == methodInfo)
                     {
                         foundControllerActionDescriptor = descriptor;
                         break;
@@ -166,7 +165,7 @@
                 {
                     throw new InvalidOperationException($"Method {methodInfo.Name} in class {methodInfo.DeclaringType.Name} is not a valid controller action.");
                 }
-                
+
                 return foundControllerActionDescriptor;
             });
         }
@@ -178,34 +177,34 @@
         {
             var result = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
 
-            var arguments = methodCallExpression.Arguments;
+            ReadOnlyCollection<Expression> arguments = methodCallExpression.Arguments;
             if (arguments.Count == 0)
             {
                 return result;
             }
 
-            var methodParameterNames = methodInfo.GetParameters();
+            ParameterInfo[] methodParameterNames = methodInfo.GetParameters();
 
             var parameterDescriptors = new Dictionary<string, string>();
-            var parameters = controllerActionDescriptor.Parameters;
+            IList<ParameterDescriptor> parameters = controllerActionDescriptor.Parameters;
             for (int i = 0; i < parameters.Count; i++)
             {
-                var parameter = parameters[i];
+                Microsoft.AspNetCore.Mvc.Abstractions.ParameterDescriptor parameter = parameters[i];
                 if (parameter.BindingInfo != null)
                 {
                     parameterDescriptors.Add(parameter.Name, parameter.BindingInfo.BinderModelName);
                 }
             }
 
-            for (var i = 0; i < arguments.Count; i++)
+            for (int i = 0; i < arguments.Count; i++)
             {
-                var methodParameterName = methodParameterNames[i].Name;
+                string methodParameterName = methodParameterNames[i].Name;
                 if (parameterDescriptors.ContainsKey(methodParameterName))
                 {
                     methodParameterName = parameterDescriptors[methodParameterName] ?? methodParameterName;
                 }
 
-                var expressionArgument = arguments[i];
+                Expression expressionArgument = arguments[i];
 
                 if (expressionArgument.NodeType == ExpressionType.Convert)
                 {
@@ -240,15 +239,15 @@
                     var constantExpression = (ConstantExpression)memberAccessExpr.Expression;
                     if (constantExpression != null)
                     {
-                        var innerMemberName = memberAccessExpr.Member.Name;
-                        var compiledLambdaScopeField = constantExpression.Value.GetType().GetField(innerMemberName);
+                        string innerMemberName = memberAccessExpr.Member.Name;
+                        FieldInfo compiledLambdaScopeField = constantExpression.Value.GetType().GetField(innerMemberName);
                         value = compiledLambdaScopeField.GetValue(constantExpression.Value);
                     }
                 }
                 else
                 {
                     // Expresion needs compiling because it is not of constant type.
-                    var convertExpression = Expression.Convert(expressionArgument, typeof(object));
+                    UnaryExpression convertExpression = Expression.Convert(expressionArgument, typeof(object));
                     value = Expression.Lambda<Func<object>>(convertExpression).Compile().Invoke();
                 }
 
@@ -268,7 +267,7 @@
             {
                 var additionalRouteValues = new RouteValueDictionary(routeValues);
 
-                foreach (var additionalRouteValue in additionalRouteValues)
+                foreach (KeyValuePair<string, object> additionalRouteValue in additionalRouteValues)
                 {
                     result[additionalRouteValue.Key] = additionalRouteValue.Value;
                 }

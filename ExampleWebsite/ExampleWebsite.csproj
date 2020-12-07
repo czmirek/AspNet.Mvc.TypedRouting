@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>20.12.7.9</AssemblyVersion>
+    <FileVersion>20.12.7.9</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\Panelak.TypedRouting\Panelak.TypedRouting.csproj" />
+  </ItemGroup>
+
+</Project>

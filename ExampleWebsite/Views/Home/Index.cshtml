@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Link examples</h1>
+<ul>
+    <li>@(Html.ActionLink<HomeController>("This is strongly typed link to controller generated with Html.ActionLink", a=>a.Index()))</li>
+    <li>This is URL to controller action generated with Url.Action with parameters: @(Url.Action<HomeController>(a=>a.Index2(123, "test-string")))</li>
+</ul>

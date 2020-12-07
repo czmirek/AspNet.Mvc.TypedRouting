@@ -1,4 +1,4 @@
-﻿namespace AspNet.Mvc.TypedRouting.LinkGeneration
+﻿namespace Panelak.TypedRouting
 {
     using System;
     using System.Linq.Expressions;

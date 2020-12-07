@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panelak.TypedRouting", "src\AspNet.Mvc.TypedRouting\Panelak.TypedRouting.csproj", "{D035D154-A0F8-4A28-B4ED-20BC768805E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleWebsite", "ExampleWebsite\ExampleWebsite.csproj", "{53107CDD-3A66-4FDA-A8AF-270205EDB63D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D035D154-A0F8-4A28-B4ED-20BC768805E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D035D154-A0F8-4A28-B4ED-20BC768805E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D035D154-A0F8-4A28-B4ED-20BC768805E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D035D154-A0F8-4A28-B4ED-20BC768805E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53107CDD-3A66-4FDA-A8AF-270205EDB63D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53107CDD-3A66-4FDA-A8AF-270205EDB63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53107CDD-3A66-4FDA-A8AF-270205EDB63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53107CDD-3A66-4FDA-A8AF-270205EDB63D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FF8402C-B8C6-440F-AEBE-3F2D06F4F2D4}
+	EndGlobalSection
+EndGlobal

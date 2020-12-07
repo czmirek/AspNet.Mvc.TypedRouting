@@ -1,10 +1,10 @@
-﻿namespace Microsoft.AspNetCore.Mvc
+﻿namespace Panelak.TypedRouting
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Routing;
     using System;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
-    using Routing;
-    using AspNet.Mvc.TypedRouting.LinkGeneration;
 
     public static class UrlHelperExtensions
     {
@@ -313,7 +313,7 @@
             object values)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, values, addControllerAndActionToRouteValues: true);
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, values, addControllerAndActionToRouteValues: true);
             return helper.Link(routeName, expressionRouteValues.RouteValues);
         }
 
@@ -336,7 +336,7 @@
             object values)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, values, addControllerAndActionToRouteValues: true);
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, values, addControllerAndActionToRouteValues: true);
             return helper.Link(routeName, expressionRouteValues.RouteValues);
         }
 
@@ -346,18 +346,18 @@
             UrlActionContext actionContext)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, actionContext.Values);
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, actionContext.Values);
             ApplyRouteValues(actionContext, expressionRouteValues);
             return helper.Action(actionContext);
         }
-        
+
         private static string Action<TController>(
             this IUrlHelper helper,
             Expression<Func<TController, Task>> action,
             UrlActionContext actionContext)
             where TController : class
         {
-            var expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, actionContext.Values);
+            ExpressionRouteValues expressionRouteValues = GetExpresionRouteHelper(helper).Resolve(action, actionContext.Values);
             ApplyRouteValues(actionContext, expressionRouteValues);
             return helper.Action(actionContext);
         }
