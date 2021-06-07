@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <Product>Strongly typed routing for ASP.NET Core 5.0</Product>
+    <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
+    <Product>Strongly typed routing for ASP.NET Core 3.1 and 5.0</Product>
     <Copyright>2020 Miroslav Bartl</Copyright>
     <Description>Panelak.TypedRouting is a class library allowing typed expression based route registration and link generation for ASP.NET Core MVC. See the project repository for more information and available features.</Description>
     <Authors>Ivaylo Kenov, Miroslav Bartl</Authors>
@@ -26,8 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net5'))">
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
+	</ItemGroup>
 
 </Project>
